@@ -1,0 +1,2 @@
+# configuration
+My setup configuration
