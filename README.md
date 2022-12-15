@@ -1,2 +1,2 @@
-# configuration
-My setup configuration
+# mySettings
+My environment settings
