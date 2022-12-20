@@ -128,3 +128,8 @@ zinit light-mode for \
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
 zinit light zdharma-continuum/fast-syntax-highlighting
+
+
+
+# nvim alias
+alias vim="nvim"
