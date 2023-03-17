@@ -136,3 +136,11 @@ zinit light zdharma-continuum/fast-syntax-highlighting
 
 # nvim alias
 alias vim="nvim"
+
+
+# git credential Manager
+
+alias github="git config --global credential.helper \"/mnt/c/Program\ Files/Git/mingw64/bin/git-credential-manager-core.exe\""
+
+# Working on a AWS environment
+alias gitaws="git config --global credential.helper '!aws codecommit credential-helper $@';git config --global credential.UseHttpPath true"
