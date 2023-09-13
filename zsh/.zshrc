@@ -144,3 +144,14 @@ alias github="git config --global credential.helper \"/mnt/c/Program\ Files/Git/
 
 # Working on a AWS environment
 alias gitaws="git config --global credential.helper '!aws codecommit credential-helper $@';git config --global credential.UseHttpPath true"
+
+# opam configuration
+test -r /home/gabriel/.opam/opam-init/init.zsh && . /home/gabriel/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+# nvm settings
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# direnv - tool that change the shell environment according to an .envrc file.
+eval "$(direnv hook zsh)"
