@@ -12,60 +12,35 @@ disable-model-invocation: true
 
 ## Instructions
 
-Add or update the `## Architecture` section in `README.md`.
+Update or create the Architecture section in README.md using only repository evidence.
 
-Use only repository evidence. Do not read the full diff unless necessary. Inspect only files needed to identify the app entrypoint, clients, modules, backing services, migrations, and API docs.
+Keep context usage low. Do not read the full diff unless necessary. Inspect only files needed to infer entrypoint, clients, modules, backing services, migrations, and API docs.
 
-Prefer when present:
+Prefer existing README, dependency files, Makefile, env example, Docker Compose files, Go source folders, Python source folders, migration folders, docs, and tests.
 
-* `README.md`
-* `go.mod`, `pyproject.toml`, `requirements*.txt`
-* `Makefile`, `.env.example`, `docker-compose*.yml`
-* `cmd/**`, `internal/**`, `pkg/**`
-* `app/**`, `src/**`
-* `db/migrations/**`, `migrations/**`, `docs/**`
+Add one GitHub-renderable Mermaid fenced block with language tag mermaid.
 
-## Diagram rules
+The Mermaid diagram must start with flowchart LR.
 
-Create one real Mermaid block in `README.md`.
+Do not wrap the Mermaid block inside another code block.
 
-The final README must contain an actual fenced block with:
+Show only inferred components:
 
-* opening fence: three backticks followed by `mermaid`
-* first Mermaid line: `flowchart LR`
-* closing fence: three backticks
+* Clients, generic if needed.
+* Main API or application.
+* Clear internal modules.
+* Backing services.
+* Migrations to database, if present.
+* Swagger or OpenAPI to API, if present.
 
-Do not nest or escape the Mermaid block inside another Markdown code block.
+Do not invent clients, services, workers, gateways, queues, or integrations.
 
-Show only what can be inferred:
+Prefer 6 to 12 nodes, short labels, and Docker Compose service names when available.
 
-* clients, using generic names if needed
-* main API/application component
-* internal modules, only if clear
-* backing services: PostgreSQL/PostGIS, Redis, MongoDB, queues, object storage, external APIs
-* migrations to database, if present
-* Swagger/OpenAPI to API, if present
+The section must include:
 
-Do not invent services, clients, workers, gateways, queues, or integrations.
+* One short architecture paragraph.
+* One Mermaid diagram.
+* One short Main flow list.
 
-Prefer 6 to 12 nodes. Use short labels. Use Docker Compose service names when available. Use `subgraph` only if it improves readability.
-
-## README section
-
-The `## Architecture` section must include:
-
-1. one short factual paragraph
-2. one renderable Mermaid diagram
-3. one short `Main flow` list
-
-Do not copy placeholder text or generic examples unless they match the repository.
-
-## Output requirements
-
-* Update `README.md` in place.
-* Do not create a separate diagram file.
-* Do not duplicate an existing architecture section.
-* Keep Mermaid syntax valid for GitHub rendering.
-* Keep the section factual and practical.
-* Do not include Claude/AI attribution.
-* End with a short summary of what changed and what could not be inferred.
+Output: update README.md in place; do not duplicate existing architecture sections; keep Mermaid valid for GitHub; stay factual; end with a short summary of changes and missing information.
