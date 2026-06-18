@@ -1,0 +1,25 @@
+# Secrets / credentials — never commit these
+*.env
+.env
+.env.*
+*.pem
+*.key
+*.ppk
+id_rsa*
+id_ed25519*
+*.p12
+*.pfx
+.netrc
+*credentials*
+*secret*
+
+# Neovim generated / machine-specific
+nvim/plugin/packer_compiled.lua
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Note: .claude/ is intentionally tracked so settings sync across machines
