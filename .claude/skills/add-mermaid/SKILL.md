@@ -1,7 +1,7 @@
 ---
 description: Adds or updates a Mermaid architecture diagram in README.md.
 disable-model-invocation: true
-------------------------------
+---
 
 # Add Mermaid architecture diagram
 
@@ -14,71 +14,58 @@ disable-model-invocation: true
 
 Add or update the `## Architecture` section in `README.md`.
 
-Use only repository evidence. Do not read the full git diff unless necessary. Inspect only files needed to identify the app entrypoint, clients, modules, backing services, migrations, and API docs.
+Use only repository evidence. Do not read the full diff unless necessary. Inspect only files needed to identify the app entrypoint, clients, modules, backing services, migrations, and API docs.
 
-Prefer these files when present:
+Prefer when present:
 
 * `README.md`
 * `go.mod`, `pyproject.toml`, `requirements*.txt`
-* `Makefile`
-* `.env.example`
-* `docker-compose*.yml`
+* `Makefile`, `.env.example`, `docker-compose*.yml`
 * `cmd/**`, `internal/**`, `pkg/**`
 * `app/**`, `src/**`
-* `db/migrations/**`, `migrations/**`
-* `docs/**`
+* `db/migrations/**`, `migrations/**`, `docs/**`
 
-## Diagram requirements
+## Diagram rules
 
-Use Mermaid in Markdown:
+Create one real Mermaid block in `README.md`.
 
-```mermaid
-flowchart LR
-```
+The final README must contain an actual fenced block with:
 
-The diagram should show only what can be inferred from the repository:
+* opening fence: three backticks followed by `mermaid`
+* first Mermaid line: `flowchart LR`
+* closing fence: three backticks
 
-* Clients, using generic names if specific clients are not found.
-* Main API/application component.
-* Main internal modules, only if clear.
-* Backing services such as PostgreSQL/PostGIS, Redis, MongoDB, object storage, queues, or external APIs.
-* Migrations to database relation, if migrations exist.
-* Swagger/OpenAPI relation, if API docs exist.
+Do not nest or escape the Mermaid block inside another Markdown code block.
 
-Do not invent services, clients, queues, workers, gateways, or external integrations.
+Show only what can be inferred:
 
-Prefer 6 to 12 nodes. Use short labels. Use actual Docker Compose service names when available. Use `subgraph` only if it improves readability.
+* clients, using generic names if needed
+* main API/application component
+* internal modules, only if clear
+* backing services: PostgreSQL/PostGIS, Redis, MongoDB, queues, object storage, external APIs
+* migrations to database, if present
+* Swagger/OpenAPI to API, if present
 
-## README section format
+Do not invent services, clients, workers, gateways, queues, or integrations.
 
-Use this structure:
+Prefer 6 to 12 nodes. Use short labels. Use Docker Compose service names when available. Use `subgraph` only if it improves readability.
 
-````md
-## Architecture
+## README section
 
-Short factual paragraph explaining the application architecture.
+The `## Architecture` section must include:
 
-```mermaid
-flowchart LR
-    Client[Client] --> API[Application API]
-    API --> DB[(Database)]
-```
+1. one short factual paragraph
+2. one renderable Mermaid diagram
+3. one short `Main flow` list
 
-Main flow:
-
-1. Clients call the API.
-2. The API routes requests through handlers/controllers.
-3. The app uses backing services for persistence, cache, or integrations.
-````
-
-Adapt the example to the actual repository.
+Do not copy placeholder text or generic examples unless they match the repository.
 
 ## Output requirements
 
 * Update `README.md` in place.
 * Do not create a separate diagram file.
 * Do not duplicate an existing architecture section.
-* Keep Mermaid syntax valid.
+* Keep Mermaid syntax valid for GitHub rendering.
 * Keep the section factual and practical.
 * Do not include Claude/AI attribution.
 * End with a short summary of what changed and what could not be inferred.
